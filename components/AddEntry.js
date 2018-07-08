@@ -22,16 +22,15 @@ export default class AddEntry extends Component {
         pinterest: 0
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const username = this.props.navigation.state.params.username;
         return fetch(`https://visa-engage.appspot.com/${username}`)
-        .then((response) => response.json())
-    .then((responseJson) => {
-      debugger;
-    })
-        .catch((error) => {
-            console.error(error);
-        });
+            .then((response) => response.json())
+            .then((responseJson) => {
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
     }
     slide = (metric, value) => {

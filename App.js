@@ -7,13 +7,14 @@ import {
 } from 'react-navigation';
 import EntryDetail from './components/EntryDetail';
 import LoginScreen from './components/LoginScreen';
+import SocialMediaFeed from './components/SocialMediaFeed';
 import History from './components/History';
 import { purple, white } from './utils/colors'
 
 const RootStack = createStackNavigator(
   {
     Home: LoginScreen,
-    Profile: AddEntry,
+    Profile: SocialMediaFeed,
   },
   {
     initialRouteName: 'Home',
