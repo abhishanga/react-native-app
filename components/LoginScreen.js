@@ -50,11 +50,11 @@ export default class LoginScreen extends Component {
                 <View style={styles.logoContainer}>
                     <Image
                         style={styles.logo}
-                        source={require('../assets/visa-logo.png')}
+                        source={require('../assets/Engage.png')}
                     />
                     <Text style={styles.title}>An app that helps your earn cashback</Text>
                 </View>
-                <Container>
+                <Container style={styles.formContainer}>
                     <Content>
                         <Item regular>
                             <Input
@@ -64,7 +64,7 @@ export default class LoginScreen extends Component {
                                 autoCapitalize='none'
                             />
                         </Item>
-                        <Item regular>
+                        <Item regular style={{marginTop:10}}>
                             <Input
                                 onChangeText={(password) => this.setState({ password })}
                                 value={this.state.password}
@@ -123,14 +123,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     formContainer: {
-        flex: 1,
-        top: 20,
-        padding: 10,
-        flexDirection: 'column'
+        padding: 10
     },
     logoContainer: {
         alignItems: 'center',
         flex: 1,
+        marginLeft:10,
         justifyContent: 'center'
     }
 })
