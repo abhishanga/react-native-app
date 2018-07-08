@@ -2,12 +2,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { red, orange, blue, lightPurp, pink, white } from '../utils/colors';
+import { createStackNavigator } from 'react-navigation';
+
 import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 function SubmitBtn({ onPress }) {
     return (
         <TouchableOpacity
-        style={styles.iosSubmitBtn}
+            style={styles.iosSubmitBtn}
             onPress={onPress}>
             <Text style={styles.submitBtnText}>SUBMIT</Text>
         </TouchableOpacity>
@@ -18,6 +20,19 @@ export default class AddEntry extends Component {
         facebook: 0,
         instagram: 0,
         pinterest: 0
+    }
+
+    componentDidMount(){
+        const username = this.props.navigation.state.params.username;
+        return fetch(`https://visa-engage.appspot.com/${username}`)
+        .then((response) => response.json())
+    .then((responseJson) => {
+      debugger;
+    })
+        .catch((error) => {
+            console.error(error);
+        });
+
     }
     slide = (metric, value) => {
         this.setState(() => ({
@@ -41,31 +56,31 @@ export default class AddEntry extends Component {
     render() {
         return (
             <View>
-            <View style={styles.item}>
-            <Text style={styles.noDataText}>👋 Share your post on social media to earn cashback!</Text>
-            </View>
-            <View style={styles.container}>
-                <View style={[styles.iconContainer, { backgroundColor: white }]}>
-                    <FontAwesome
-                        name='facebook-official'
-                        color={blue}
-                        size={32}
-                    />
+                <View style={styles.item}>
+                    <Text style={styles.noDataText}>👋 Share your post on social media to earn cashback!</Text>
                 </View>
-                <View style={[styles.iconContainer, { backgroundColor: white }]}>
-                    <FontAwesome
-                        name='instagram'
-                        color={blue}
-                        size={32}
-                    />
-                </View>
-                <View style={[styles.iconContainer, { backgroundColor: white }]}>
-                    <FontAwesome
-                        name='pinterest'
-                        color={blue}
-                        size={32}
-                    />
-                </View>
+                <View style={styles.container}>
+                    <View style={[styles.iconContainer, { backgroundColor: white }]}>
+                        <FontAwesome
+                            name='facebook-official'
+                            color={blue}
+                            size={32}
+                        />
+                    </View>
+                    <View style={[styles.iconContainer, { backgroundColor: white }]}>
+                        <FontAwesome
+                            name='instagram'
+                            color={blue}
+                            size={32}
+                        />
+                    </View>
+                    <View style={[styles.iconContainer, { backgroundColor: white }]}>
+                        <FontAwesome
+                            name='pinterest'
+                            color={blue}
+                            size={32}
+                        />
+                    </View>
                 </View>
                 <SubmitBtn onPress={this.submit} />
             </View>
@@ -102,26 +117,27 @@ const styles = StyleSheet.create({
         color: white,
         fontSize: 22,
         textAlign: 'center',
-      },
+    },
     noDataText: {
         fontSize: 20,
-            paddingTop: 20,
-            paddingBottom: 20
-          },
-          item: {
-            backgroundColor: white,
-            borderRadius: 16,
-            padding: 20,
-            marginLeft: 10,
-            marginRight: 10,
-            marginTop: 17,
-            justifyContent: 'center',
-            shadowRadius: 3,
-            shadowOpacity: 0.8,
-            shadowColor: 'rgba(0, 0, 0, 0.24)',
-            shadowOffset: {
-              width: 0,
-              height: 3
-            },
-          }
+        paddingTop: 20,
+        paddingBottom: 20
+    },
+    item: {
+        backgroundColor: white,
+        borderRadius: 16,
+        padding: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 17,
+        justifyContent: 'center',
+        shadowRadius: 3,
+        shadowOpacity: 0.8,
+        shadowColor: 'rgba(0, 0, 0, 0.24)',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+    }
 })
+

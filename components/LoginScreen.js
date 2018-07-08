@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 import { red, orange, blue, lightPurp, pink, white } from '../utils/colors';
 
 function SubmitBtn({ onPress }) {
     return (
         <TouchableOpacity
-        style={styles.iosSubmitBtn}
+            style={styles.iosSubmitBtn}
             onPress={onPress}>
             <Text style={styles.submitBtnText}>SUBMIT</Text>
         </TouchableOpacity>
@@ -22,18 +23,23 @@ export default class LoginScreen extends Component {
         };
     }
 
+    static navigationOptions = {
+        title: 'Welcome',
+    };
+
     submit = () => {
-        
+
         const entry = this.state
         return fetch(`https://visa-engage.appspot.com/validateUser?userId=${this.state.username}&password=${this.state.password}`)
-        .then((responseJson) => {
-            debugger;
-            console.log(responseJson);
-    
-          })
-        .catch((error) =>{
-          console.error(error);
-        });
+            .then((responseJson) => {
+                if (responseJson.status === 200) {
+                    this.props.navigation.navigate('Profile', { username: this.state.username })
+                }
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
     }
 
@@ -44,13 +50,13 @@ export default class LoginScreen extends Component {
                     style={{ height: 80, width: 200, borderColor: 'gray', borderWidth: 1 }}
                     onChangeText={(username) => this.setState({ username })}
                     value={this.state.username}
-                    autoCapitalize = 'none'
+                    autoCapitalize='none'
                 />
                 <TextInput
-                    style={{ height: 80, width: 200,borderColor: 'gray', borderWidth: 1 }}
+                    style={{ height: 80, width: 200, borderColor: 'gray', borderWidth: 1 }}
                     onChangeText={(password) => this.setState({ password })}
                     value={this.state.password}
-                    autoCapitalize = 'none'
+                    autoCapitalize='none'
                 />
                 <SubmitBtn onPress={this.submit} />
             </View>
@@ -87,26 +93,26 @@ const styles = StyleSheet.create({
         color: white,
         fontSize: 22,
         textAlign: 'center',
-      },
+    },
     noDataText: {
         fontSize: 20,
-            paddingTop: 20,
-            paddingBottom: 20
-          },
-          item: {
-            backgroundColor: white,
-            borderRadius: 16,
-            padding: 20,
-            marginLeft: 10,
-            marginRight: 10,
-            marginTop: 17,
-            justifyContent: 'center',
-            shadowRadius: 3,
-            shadowOpacity: 0.8,
-            shadowColor: 'rgba(0, 0, 0, 0.24)',
-            shadowOffset: {
-              width: 0,
-              height: 3
-            },
-          }
+        paddingTop: 20,
+        paddingBottom: 20
+    },
+    item: {
+        backgroundColor: white,
+        borderRadius: 16,
+        padding: 20,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 17,
+        justifyContent: 'center',
+        shadowRadius: 3,
+        shadowOpacity: 0.8,
+        shadowColor: 'rgba(0, 0, 0, 0.24)',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+    }
 })
