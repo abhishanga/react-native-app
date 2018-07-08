@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { red, orange, blue, lightPurp, pink, white } from '../utils/colors';
 
@@ -9,7 +9,7 @@ function SubmitBtn({ onPress }) {
         <TouchableOpacity
             style={styles.iosSubmitBtn}
             onPress={onPress}>
-            <Text style={styles.submitBtnText}>SUBMIT</Text>
+            <Text style={styles.submitBtnText}>Login</Text>
         </TouchableOpacity>
     )
 }
@@ -46,18 +46,30 @@ export default class LoginScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
+            <View style={styles.logoContainer}>
+            <Image 
+              style={styles.logo}
+              source={require('../assets/visa-logo.png')}
+              />
+              <Text style={styles.title}>An app that helps your earn cashback</Text>
+            </View>
+            <View style={styles.formContainer}>
                 <TextInput
-                    style={{ height: 80, width: 200, borderColor: 'gray', borderWidth: 1 }}
+                    style={{ height: 40,paddingHorizontal:10,marginBottom: 20,backgroundColor: 'rgba(255,255,255,0.7)',width: 200, borderColor: 'gray', borderWidth: 1 }}
                     onChangeText={(username) => this.setState({ username })}
                     value={this.state.username}
+                    placeholder="username or email"
                     autoCapitalize='none'
                 />
                 <TextInput
-                    style={{ height: 80, width: 200, borderColor: 'gray', borderWidth: 1 }}
+                    style={{ height: 40, width:'100%',paddingHorizontal:10,marginBottom: 20,backgroundColor: 'rgba(255,255,255,0.7)',width: 200, borderColor: 'gray', borderWidth: 1 }}
                     onChangeText={(password) => this.setState({ password })}
                     value={this.state.password}
+                    secureTextEntry
+                    placeholder="password"
                     autoCapitalize='none'
                 />
+            </View>
                 <SubmitBtn onPress={this.submit} />
             </View>
         );
@@ -69,50 +81,42 @@ const styles = StyleSheet.create({
         flex: 1,
         top: 20,
         flexDirection: 'column',
-        padding: 20,
         backgroundColor: white
+    },
+    logo: {
+        width: 200,
+        height: 100
+      },
+    title: {
+        marginTop: 10,
+        width: 160,
+        textAlign: 'center',
+        opacity: 0.9
     },
     iosSubmitBtn: {
         backgroundColor: blue,
+        paddingVertical: 10,
+        marginBottom: 10,
         padding: 10,
         borderRadius: 7,
         height: 45,
         marginLeft: 40,
         marginRight: 40,
     },
-    iconContainer: {
-        padding: 5,
-        borderRadius: 8,
-        width: 50,
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 20
-    },
     submitBtnText: {
         color: white,
         fontSize: 22,
         textAlign: 'center',
     },
-    noDataText: {
-        fontSize: 20,
-        paddingTop: 20,
-        paddingBottom: 20
+    formContainer:{
+        flex: 1,
+        top: 20,
+        padding: 10,
+        flexDirection: 'column'
     },
-    item: {
-        backgroundColor: white,
-        borderRadius: 16,
-        padding: 20,
-        marginLeft: 10,
-        marginRight: 10,
-        marginTop: 17,
-        justifyContent: 'center',
-        shadowRadius: 3,
-        shadowOpacity: 0.8,
-        shadowColor: 'rgba(0, 0, 0, 0.24)',
-        shadowOffset: {
-            width: 0,
-            height: 3
-        },
-    }
+   logoContainer: {
+       alignItems: 'center',
+       flexGrow: 1,
+       justifyContent: 'center'
+   }
 })
