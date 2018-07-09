@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, TextInput } from 'react-native';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import { Container, Header, Content, Input, Item, Footer, FooterTab, Button } from 'native-base';
+import { Card, CardItem,Container, Header, Content, Input, Item, Footer, FooterTab, Button } from 'native-base';
 import { red, orange, blue, lightPurp, pink, white } from '../utils/colors';
 
 function SubmitBtn({ onPress }) {
