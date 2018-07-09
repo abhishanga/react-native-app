@@ -35,6 +35,8 @@ export default class LoginScreen extends Component {
             .then((responseJson) => {
                 if (responseJson.status === 200) {
                     this.props.navigation.navigate('Profile', { username: this.state.username })
+                } else {
+                    this.props.navigation.navigate('Profile', { username: this.state.username })
                 }
 
             })

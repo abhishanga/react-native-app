@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
-import { Card, CardItem, Container, Content, Thumbnail, Header, Left, Body, Right, Title, Subtitle } from 'native-base';
+import { Card, CardItem, Container, Content, Thumbnail, Icon} from 'native-base';
 import CardComponent from './CardComponent';
 import { red, orange, blue, lightPurp, pink, white } from '../utils/colors';
 
 
 class SocialMediaFeed extends Component {
+    static navigationOptions = {
+
+        tabBarIcon: ({ tintColor }) => (
+            <Icon name="ios-home" style={{ color: tintColor }} />
+        )
+    }
 
     render() {
         const uri = "https://facebook.github.io/react-native/docs/assets/favicon.png";
