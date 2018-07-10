@@ -4,7 +4,6 @@ import { Card, CardItem, Container, Content, Thumbnail, Icon} from 'native-base'
 import CardComponent from './CardComponent';
 import { red, orange, blue, lightPurp, pink, white } from '../utils/colors';
 
-
 class SocialMediaFeed extends Component {
     static navigationOptions = {
 

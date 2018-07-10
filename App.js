@@ -14,7 +14,7 @@ import { purple, white } from './utils/colors'
 
 const RootStack = createStackNavigator(
   {
-    Home: LoginScreen,
+    Home: MainScreen,
     Profile: MainScreen,
   },
   {

@@ -1,5 +1,8 @@
 {
   "expo": {
     "sdkVersion": "27.0.0"
-  }
+  },
+  "facebookScheme": "fb270293163522123",
+  "facebookAppId":   "270293163522123",
+  "facebookDisplayName": "Abhishanga's first app"
 }
