@@ -10,7 +10,7 @@ import {
 import RewardsTab from './RewardsTab';
 import SocialMediaFeed from "./SocialMediaFeed";
 import RegistrationTab from "./RegistrationTab";
-import AccountSettingsTab from "./AccountSettingsTab";
+import MerchantEnrollment from "./MerchantEnrollment";
 
 import { TabNavigator } from 'react-navigation'
 import { Icon } from 'native-base'
@@ -42,8 +42,8 @@ const AppTabNavigator = TabNavigator({
     RegistrationTab: {
         screen: RegistrationTab
     },
-    AccountSettingsTab: {
-        screen: AccountSettingsTab
+    MerchantEnrollment: {
+        screen: MerchantEnrollment
     }
 
 }, {
